@@ -1,0 +1,178 @@
+<html>
+    <head>
+  <style>
+      body{
+          background-color: yellow;
+      }
+      #clockContainer{
+        text-align: center;
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translateX(-50%) translateY(-50%);
+      }
+      #clockContainer:hover{
+        cursor:pointer;
+      }
+      div{
+         display:inline-block; 
+         font-size:100px;      
+      }
+      #timeetc{
+          margin-right: 40px;
+      }
+  </style>
+    </head>
+    <body>
+   <center>
+       <section id="clockContainer">
+       <div id="timeetc">
+        <div id="hour">
+        
+        </div>
+        <div id="minute">
+
+        </div>
+        <div id="second">
+            </div>
+            <div id="ampm">
+
+            </div>
+        </div>
+        <div id="date">
+
+        </div>
+        <div id="month">
+
+        </div>
+      <div id="year">
+
+      </div>
+    </section>
+       <br>
+       <div id="eventContainer">
+           <p id="eventText"></p>
+       </div>
+   </center>
+        <script>
+        function getExactTime(){
+
+        var dateCustom = new Date();
+
+        var year = dateCustom.getFullYear();
+        
+        var monthNumber = dateCustom.getMonth();
+        var month = dateCustom.getMonth();
+        if(month === 0){
+            month = "January";
+        }
+        if(month === 1){
+            month = "February";
+        }
+        if(month === 2){
+            month = "March";
+        }
+        if(month === 3){
+            month = "April";
+        }
+        if(month === 4){
+            month = "May";
+        }
+        if(month === 5){
+            month = "June";
+        }
+        if(month === 6){
+            month = "July";
+        }
+        if(month === 7){
+            month = "August";
+        }
+        if(month === 8){
+            month = "September";
+        }
+        if(month === 9){
+            month = "October";
+        }
+        if(month === 10){
+            month = "November";
+        }
+        if(month === 11){
+            month = "December";
+        }
+
+
+        var date = dateCustom.getDate();
+      
+
+        var initialHours = dateCustom.getHours();
+        if(initialHours>24){
+            hours = 0;
+        }
+        var AmPm = "";
+       var hours = dateCustom.getHours();
+
+        if(hours>12){
+            var hourDifference = hours-12;
+            hours = hourDifference;
+            AmPm = "PM";
+        }
+        else{
+           AmPm = "AM"; 
+        }
+
+        if(hours<10){
+            hours = "0"+hours;
+        }
+
+       // console.log(AmPm);
+     
+    
+
+        var minutes = dateCustom.getMinutes();
+        if(minutes<10){
+            minutes = "0"+minutes;
+        }
+        else{
+            minutes = minutes;
+        }
+
+        var seconds = dateCustom.getSeconds();
+        if(seconds<10){
+            seconds = "0"+seconds;
+        }
+        else{
+            minutes = minutes;
+        }
+
+        var fullDate = ["Year- "+year,"Month- "+month,"Date- "+date,"Hours- "+hours,"Minutes- "+minutes,"Seconds- "+seconds];
+        
+      //  console.log(fullDate);
+
+        var yearText = document.getElementById("year");
+        yearText.textContent = (year);
+
+        var monthText = document.getElementById("month");
+        monthText.textContent = (month+" ");
+
+        var dateText = document.getElementById("date");
+        dateText.textContent = (date+" ");
+
+        var hourText = document.getElementById("hour");
+        hourText.textContent = (hours+": ");
+
+        var minuteText = document.getElementById("minute");
+        minuteText.textContent = (minutes+": ");
+
+        var secondText = document.getElementById("second");
+        secondText.textContent = (seconds);
+
+        var ampm = document.getElementById("ampm");
+        ampm.textContent = (AmPm);
+
+        setTimeout("getExactTime()", 1000);
+        }
+
+        getExactTime();
+        </script>
+    </body>
+</html>
